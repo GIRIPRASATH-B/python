@@ -1,20 +1,21 @@
-class Solution(object):
-   def generateParenthesis(self, n):
-      """
-      :type n: int
-      :rtype: List[str]
-      """
-      result = []
-      self.generateParenthesisUtil(n,n,"",result)
-      return result
-   def generateParenthesisUtil(self, left,right,temp,result):
-      if left == 0 and right == 0:
-         result.append(temp)
-         return
-      if left>0:
-         self.generateParenthesisUtil(left-1,right,temp+'(',result)
-      if right > left:
-         self.generateParenthesisUtil(left, right-1, temp + ')', result)
-n=int(input("enter a no.="))
-ob = Solution()
-print(ob.generateParenthesis(n))
+def countstrings(n, start):
+	if n == 0:
+		return 1
+	cnt = 0
+	for i in range(start, 5):
+		cnt += countstrings(n - 1, i)
+	return cnt
+	
+def countVowelStrings(n):
+	return countstrings(n, 0)
+
+n = 2
+print(countVowelStrings(n))
+n = 1
+print(countVowelStrings(n))
+n = 33
+print(countVowelStrings(n))
+n = 55
+print(countVowelStrings(n))
+n = 52
+print(countVowelStrings(n))
