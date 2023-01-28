@@ -1,36 +1,25 @@
-def findCombinations(keypad, keys, combinations, index, result=''):
-	if index == -1:
-		combinations.add(result)
-		return
-	digit = keys[index]
-	length = len(keypad[digit])
+def delchar(s,c):
+    if len(c) != 1:
+        return s
+    else:
+        return s.replace(c, "")
 
-	for i in range(length):
-		findCombinations(keypad, keys, combinations, index - 1, keypad[digit][i] + result)
+s = "Hello world"
+c = "l"
+print("String after the character is removed: " + delchar(s,c))
 
+s = "Good evening"
+c = "o"
+print("String after the character is removed: " + delchar(s,c))
 
-def findAllCombinations(keypad, keys):
-	if not keypad or not keys:
-		return set()
-	combinations = set()
-	findCombinations(keypad, keys, combinations, len(keys) - 1)
-	return combinations
+s = "Take care"
+c = "e"
+print("String after the character is removed: " + delchar(s,c))
 
+s = "123456s"
+c = "6"
+print("String after the character is removed: " + delchar(s,c))
 
-if _name_ == '_main_':
-
-	keypad = {
-		2: ['A', 'B', 'C'],
-		3: ['D', 'E', 'F'],
-		4: ['G', 'H', 'I'],
-		5: ['J', 'K', 'L'],
-		6: ['M', 'N', 'O'],
-		7: ['P', 'Q', 'R', 'S'],
-		8: ['T', 'U', 'V'],
-		9: ['W', 'X', 'Y', 'Z'],
-                                0:[' '],
-                
-	}
-	keys = [8,7]
-combinations = findAllCombinations(keypad, keys)
-print(combinations)
+s = "Red rose"
+c = "e"
+print("String after the character is removed: " + delchar(s,c))
